@@ -1,0 +1,47 @@
+<app-user-header></app-user-header>
+<div class="container">
+    <div class="row calDialog">
+        <div class="col-md-12">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-select form-select-sm" name="calendarYear"
+                                [(ngModel)]="calendarRequest.year" (change)="refreshCalendar()">
+                                <option value="0">--- YEAR ---</option>
+                                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select form-select-sm" name="calendarMonth"
+                                [(ngModel)]="calendarRequest.month" (change)="refreshCalendar()">
+                                <option value="0">--- MONTH ---</option>
+                                <option *ngFor="let month of months" [value]="month.key">{{month.value}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" (click)="currentMonthCalendar()" class="btn btn-primary btn-sm"
+                                [innerHTML]="btnContent" [disabled]="isBtnDisabled"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-5">
+        <div class="card-header">
+            <h4 style="text-align: center;" [innerHTML]="cardHeading"></h4>
+        </div>
+        <div class="card-body">
+            <div *ngIf="weeks.length > 0">
+                <div class="row" *ngFor="let weekArray of weeks">
+                    <div class="m-1 p-2 col text-center border" *ngFor="let day of weekArray">
+                        <button (click)="fetchDayCalendar(day.dayInMonth)" type="button" class="btn btn-warning btn-sm">{{day.dayInMonth}}</button><br>
+                        <small>{{day.weekOfDay}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

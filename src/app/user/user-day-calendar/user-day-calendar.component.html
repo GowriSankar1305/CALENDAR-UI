@@ -1,0 +1,55 @@
+<app-user-header></app-user-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success float-end" (click)="showDialog()">
+                <i class="bi bi-bookmark-fill"></i>&nbsp;Mark Availability</button>
+        </div>
+    </div>
+    <div class="row calDialog" [ngClass]="{'hidden': showElement}">
+        <div class="col-md-12">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="form-select form-select-sm" [(ngModel)]="interval" (change)="fetchStartTime()">
+                                <option value="">--- SELECT INTERVAL ---</option>
+                                <option value="HOUR">HOUR</option>
+                                <option value="HALF_AN_HOUR">HALF_AN_HOUR</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select form-select-sm" name="startTime"
+                                [(ngModel)]="startTime" (change)="fetchEndTime()">
+                                <option value="">--- Start time ---</option>
+                                <option *ngFor="let stime of startTimeArray" [value]="stime">{{stime}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select form-select-sm" name="endTime" [(ngModel)]="endTime">
+                                <option value="">--- End time ---</option>
+                                <option *ngFor="let etime of endTimeArray" [value]="etime">{{etime}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" (click)="saveAvailability()" class="btn btn-primary btn-sm"
+                                [innerHTML]="btnContent" [disabled]="isBtnDisabled"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-5">
+        <div class="card-header">
+            <h4 style="text-align:center">{{cardHeading}}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row" *ngFor="let hour of calendarDay.hours">
+                <div class="border col m-1 p-2" [ngStyle]="{'background-color': hour.isAvailable ? '' : '#fcba03'}">
+                    {{hour.slot}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

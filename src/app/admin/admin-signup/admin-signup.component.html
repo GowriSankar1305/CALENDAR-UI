@@ -1,0 +1,48 @@
+<div style="background-color: rgb(209, 213, 219);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="margin: 85px;">
+                    <div class="card-header">
+                        <h4 style="text-align: center;">Dynamic user availability and event scheduling system</h4>
+                        <h4 style="text-align: center;">Admin registration</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="fullName" [(ngModel)]="admin.fullName" placeholder="Full name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="adminPassword" [(ngModel)]="admin.adminPassword" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="emailId" [(ngModel)]="admin.emailId" placeholder="Email id">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="mobileNo" [(ngModel)]="admin.mobileNo" placeholder="Mobile number">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-1">
+                                    <button type="button" (click)="signupTheAdmin()" class="btn btn-success w-100" [innerHTML]="btnContent" [disabled]="isBtnDisabled"></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-1">
+                                    <a [routerLink]="['/admin/login']" class="btn btn-primary w-100">LOGIN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
